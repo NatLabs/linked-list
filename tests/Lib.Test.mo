@@ -22,7 +22,7 @@ test("populate list with externally created nodes", func() {
 
     LinkedList.append_node(list, node3);
     LinkedList.prepend_node(list, node1);
-    LinkedList.insert_node(list, node2, 1);
+    LinkedList.insert_node(list, 1, node2);
 
     assert LinkedList.size(list) == 3;
     assert LinkedList.get(list, 0) == 1;

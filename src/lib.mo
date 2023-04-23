@@ -157,7 +157,7 @@ module {
     };
 
     /// Inserts a node at the specified index.
-    public func insert_node<Item>(list : LinkedList<Item>, node : Node<Item>, i : Nat) {
+    public func insert_node<Item>(list : LinkedList<Item>, i : Nat, node : Node<Item>) {
         if (i > list._size) {
             Debug.trap("LinkedList: Index out of bounds");
         };
@@ -225,7 +225,7 @@ module {
     /// Inserts an item at the specified index.
     public func insert<Item>(list : LinkedList<Item>, i : Nat, item : Item) {
         let node = Node<Item>(item);
-        insert_node(list, node, i);
+        insert_node(list, i, node);
     };
 
     /// Removes the item at the specified index.
