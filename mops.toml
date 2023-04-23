@@ -1,3 +1,10 @@
+[package]
+name = "linked-list"
+version = "0.0.1"
+description = "A doubly linked list with functions for node level access"
+repository = "https://github.com/NatLabs/linked-list"
+keywords = ["linked-list", "doubly-linked-list", "data struture"]
+
 [dependencies]
 base = "0.8.1"
 
