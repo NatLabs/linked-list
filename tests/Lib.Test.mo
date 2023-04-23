@@ -1,38 +1,31 @@
 import Debug "mo:base/Debug";
-import Iter "mo:base/Iter";
-import Nat "mo:base/Nat";
+import {test} "mo:test";
+import LinkedList "../src";
 
-import ActorSpec "./utils/ActorSpec";
+test("create linked list", func() {
+    let list = LinkedList.LinkedList<Nat>();
 
-import Lib "../src/";
+    LinkedList.append(list, 1);
+    LinkedList.append(list, 2);
+    LinkedList.append(list, 3);
 
-let {
-    assertTrue;
-    assertFalse;
-    assertAllTrue;
-    describe;
-    it;
-    skip;
-    pending;
-    run;
-} = ActorSpec;
+    assert LinkedList.size(list) == 3;
+    assert LinkedList.toArray(list) == [1, 2, 3];
+});
 
-let success = run([
-    describe(
-        " (Function Name) ",
-        [
-            it(
-                "(test name)",
-                do {
-                    assertTrue(true);
-                },
-            ),
-        ],
-    ),
-]);
+test("populate list with externally created nodes", func() {
+    let list = LinkedList.LinkedList<Nat>();
 
-if (success == false) {
-    Debug.trap("\1b[46;41mTests failed\1b[0m");
-} else {
-    Debug.print("\1b[23;42;3m Success!\1b[0m");
-};
+    let node1 = LinkedList.Node<Nat>(1);
+    let node2 = LinkedList.Node<Nat>(2);
+    let node3 = LinkedList.Node<Nat>(3);
+
+    LinkedList.append_node(list, node3);
+    LinkedList.prepend_node(list, node1);
+    LinkedList.insert_node(list, node2, 1);
+
+    assert LinkedList.size(list) == 3;
+    assert LinkedList.get(list, 0) == 1;
+    assert LinkedList.get(list, 1) == 2;
+    assert LinkedList.get(list, 2) == 3;
+});
