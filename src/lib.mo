@@ -361,6 +361,16 @@ module {
         };
     };
 
+    public func clone<Item>(list: LinkedList<Item>) : LinkedList<Item> {
+        let dup = LinkedList<Item>();
+
+        for (item in vals(list)) {
+            append(dup, item);
+        };
+
+        dup
+    };  
+
     /// Returns `true` if the list is empty, `false` otherwise.
     public func isEmpty<Item>(list : LinkedList<Item>) : Bool {
         list._size == 0;
